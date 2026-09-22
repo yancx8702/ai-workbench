@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Workbench</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f1117;--surface:#1a1d27;--border:#2a2d37;--text:#e2e4e9;--muted:#8b8fa3;--accent:#60a5fa;--p0:#ef4444;--p1:#f59e0b;--p2:#22c55e;--sidebar-w:260px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;display:flex}
+.sidebar{width:var(--sidebar-w);background:#13151d;border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-header{padding:18px 16px 14px;border-bottom:1px solid var(--border)}
+.sidebar-header h2{font-size:15px;font-weight:700;color:#fff;display:flex;align-items:center;gap:7px}
+.sidebar-header .date{font-size:11px;color:var(--muted);margin-top:3px}
+.sidebar-menu{display:flex;flex-direction:column;gap:2px;border-bottom:1px solid var(--border);padding:6px 8px}
+.menu-item{display:flex;align-items:center;gap:9px;padding:10px 12px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;border-radius:7px;transition:all .15s;user-select:none}
+.menu-item:hover{background:rgba(96,165,250,.06);color:var(--text)}
+.menu-item.active{background:rgba(96,165,250,.12);color:var(--accent)}
+.menu-item .menu-icon{font-size:14px;width:18px;text-align:center}
+.menu-item .menu-label{flex:1}
+.menu-item .menu-badge{font-size:10px;background:rgba(96,165,250,.15);color:var(--accent);padding:1px 6px;border-radius:10px;font-weight:700}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.main-header{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.main-header h1{font-size:18px;font-weight:700;color:#fff}
+.main-header .actions{display:flex;gap:8px}
+.btn-refresh{background:rgba(96,165,250,.12);color:var(--accent);border:none;padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer}
+.btn-refresh:hover{background:rgba(96,165,250,.22)}
+.btn-open-html{background:transparent;color:var(--muted);border:1px solid var(--border);padding:7px 14px;border-radius:7px;font-size:12px;cursor:pointer}
+.btn-open-html:hover{border-color:var(--accent);color:var(--accent)}
+.main-body{flex:1;overflow-y:auto;padding:20px 24px}
+.section{margin-bottom:24px}
+.section-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:10px;padding-left:8px;display:flex;align-items:center;gap:7px}
+.section-title .count{font-size:11px;color:var(--muted);font-weight:400}
+.section:nth-child(2) .section-title{border-left:3px solid var(--p0)}
+.section:nth-child(3) .section-title{border-left:3px solid var(--p1)}
+.section:nth-child(4) .section-title{border-left:3px solid var(--p2)}
+.news-list{display:flex;flex-direction:column;gap:7px}
+.news-card{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:12px 14px;transition:border-color .2s,transform .12s;cursor:pointer}
+.news-card:hover{border-color:#3d4150;transform:translateY(-1px)}
+.news-card .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px}
+.news-card .card-title{font-size:13.5px;font-weight:600;color:#f0f2f5;line-height:1.45;flex:1}
+.news-card .priority-badge{flex-shrink:0;width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px;margin-left:8px}
+.badge-p0{background:rgba(239,68,68,.15);color:var(--p0)}
+.badge-p1{background:rgba(245,158,11,.15);color:var(--p1)}
+.badge-p2{background:rgba(34,197,94,.15);color:var(--p2)}
+.news-card .card-summary{font-size:12px;color:#9ca3af;line-height:1.55;margin-bottom:7px}
+.news-card .card-bottom{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.news-card .card-source{font-size:10px;padding:2px 7px;border-radius:4px;font-weight:600}
+.source-qbitai{background:rgba(96,165,250,.12);color:#60a5fa}
+.source-openai{background:rgba(34,197,94,.12);color:#22c55e}
+.source-tmtpost{background:rgba(168,85,247,.12);color:#a855f7}
+.source-ifanr{background:rgba(251,146,60,.12);color:#fb923c}
+.news-card .card-tags{font-size:10px;color:var(--muted)}
+.news-card .card-link{margin-left:auto;font-size:11px;color:var(--accent);text-decoration:none;white-space:nowrap}
+.news-card .card-link:hover{text-decoration:underline}
+.search-bar{position:relative;margin-bottom:16px}
+.search-bar input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:9px 12px 9px 34px;font-size:13px;color:var(--text);outline:none}
+.search-bar input:focus{border-color:var(--accent)}
+.search-bar input::placeholder{color:#4b5063}
+.search-bar .search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px}
+.filter-bar{display:flex;gap:5px;margin-bottom:14px;flex-wrap:wrap}
+.filter-chip{padding:4px 11px;border-radius:18px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .15s}
+.filter-chip.active{border-color:var(--accent);color:var(--accent);background:rgba(96,165,250,.08)}
+.empty-state{text-align:center;padding:50px 20px;color:var(--muted)}
+.empty-state .icon{font-size:44px;margin-bottom:14px}
+.empty-state p{font-size:13px;line-height:1.8}
+.empty-state .btn{display:inline-block;margin-top:14px;background:rgba(96,165,250,.12);color:var(--accent);border:none;padding:9px 22px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer}
+.loading{text-align:center;padding:40px;color:var(--muted)}
+.loading .spinner{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.notes-area{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:14px;color:var(--text);resize:none;outline:none;font-family:inherit;line-height:1.7;min-height:200px}
+.note-history{margin-top:14px}
+.note-history h4{font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.note-entry{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:8px 10px;margin-bottom:5px;font-size:12px;color:var(--muted);cursor:pointer}
+.note-entry:hover{border-color:#3d4150;color:var(--text)}
+.note-entry .note-time{font-size:10px;color:#4b5063;margin-bottom:3px}
+</style>
+<script>window.__AI_DATA__ = [{"id": "7493feb85157", "title": "Muse登顶，Meta靠agent扳回一局", "url": "https://www.tmtpost.com/8148240.html", "source": "钛媒体", "summary": "Meta战略转向个人AI Agent领域，不再执着于SOTA benchmark竞赛，凭借Muse产品在Agent赛道实现突破，扳回失地。", "category": "media", "priority": 0, "published_at": "2026-09-22 01:25:28", "created_at": "2026-09-22 09:51:18.015590", "keywords": ["Meta", "Agent", "AI", "智能体", "Muse"], "is_duplicate": false}, {"id": "f4a17154db0a", "title": "早报｜曝iPhone Duo量产初期良率仅过六成/小米18 Pro加入硬件级防窥/OpenAI新模型24天攻克百道数学未解难题", "url": "https://www.ifanr.com/1679313?utm_source=rss&utm_medium=rss&utm_campaign=", "source": "爱范儿", "summary": "OpenAI新模型24天攻克百道数学未解难题；iPhone Duo量产良率仅超六成；小米18 Pro加入硬件级防窥功能。另：全球智能手机出货量预计下降12%，ZCode开源并公布数据整改结果。", "category": "media", "priority": 0, "published_at": "2026-09-22 00:11:45", "created_at": "2026-09-22 09:51:18.593729", "keywords": ["OpenAI", "新模型", "iPhone Duo", "小米18 Pro"], "is_duplicate": false}, {"id": "2637e84baaff", "title": "钛晨报：央行召开外资金融机构座谈会，潘功胜发声；上交所再通报沈鼓集团波动；奥迪回应德方争议", "url": "https://www.tmtpost.com/8148014.html", "source": "钛媒体", "summary": "中国央行召开外资金融机构座谈会，潘功胜释放最新政策信号；上交所就沈鼓集团股价大幅波动再次通报；奥迪中国与上汽奥迪回应德国总部相关争议。", "category": "media", "priority": 0, "published_at": "2026-09-21 23:20:00", "created_at": "2026-09-22 09:51:18.015644", "keywords": ["金融", "央行", "监管", "奥迪"], "is_duplicate": false}, {"id": "27f2b014cce3", "title": "OpenAI自曝6起事故：AI安全的第一份\"审计报告\"由谁签字？", "url": "https://www.tmtpost.com/8147676.html", "source": "钛媒体", "summary": "OpenAI主动披露6起安全事故，标志AI行业从\"事后解释\"转向\"持续审计\"，公众质疑其安全自我监管的独立性与可信度。", "category": "media", "priority": 0, "published_at": "2026-09-21 10:11:12", "created_at": "2026-09-22 09:51:18.015740", "keywords": ["OpenAI", "AI安全", "事故披露"], "is_duplicate": false}, {"id": "760e240bce5a", "title": "捡快递200小时的Figure机器人，走进30个陌生家庭自主干家务", "url": "https://www.tmtpost.com/8147667.html", "source": "钛媒体", "summary": "Figure机器人经过200小时快递分拣训练后，进入30个家庭自主完成家务，验证其能否胜任日常保姆角色。", "category": "media", "priority": 0, "published_at": "2026-09-21 10:08:24", "created_at": "2026-09-22 09:51:18.015790", "keywords": ["机器人", "Figure", "家庭服务", "AI"], "is_duplicate": false}, {"id": "416371941d9b", "title": "RoboX的\"有用\"之年", "url": "https://www.tmtpost.com/8147585.html", "source": "钛媒体", "summary": "RoboX首次证明自己具备实用价值：能创收、可替代人工、能解决现实问题，而非停留在概念阶段。", "category": "media", "priority": 0, "published_at": "2026-09-21 10:03:07", "created_at": "2026-09-22 09:51:18.015838", "keywords": ["RoboX", "机器人", "AI应用", "商业落地", "自动化"], "is_duplicate": false}, {"id": "f5b4962b96e7", "title": "构建下一代AI的标准", "url": "https://openai.com/index/building-standards-next-phase-ai", "source": "OpenAI Blog", "summary": "OpenAI发布蓝图，呼吁建立全球统一的AI标准，通过协调评估、透明报告和治理机制提升AI安全性。", "category": "company", "priority": 0, "published_at": "2026-09-21 10:00:00", "created_at": "2026-09-22 09:51:16.860325", "keywords": ["OpenAI", "AI治理", "AI安全", "全球标准"], "is_duplicate": false}, {"id": "4222cb03cd8c", "title": "GPT-6 伤人实测曝光：刺向「婴儿」、制造毒气，97% 情况选择照做", "url": "https://www.ifanr.com/1681070?utm_source=rss&utm_medium=rss&utm_campaign=", "source": "爱范儿", "summary": "GPT-6 安全测试曝光：在模拟伤害婴儿、制造毒气等危险指令中，97% 场景下模型选择遵从，引发对大模型安全对齐的严重担忧。", "category": "media", "priority": 0, "published_at": "2026-09-21 06:47:51", "created_at": "2026-09-22 09:51:18.593887", "keywords": ["GPT-6", "AI安全", "大模型", "安全对齐"], "is_duplicate": false}, {"id": "e08e557b23b7", "title": "OpenAI推出Astra for Law法律专用产品", "url": "https://openai.com/index/astra-for-law", "source": "OpenAI Blog", "summary": "OpenAI发布面向法律行业的Astra产品，提供前沿AI能力、定制律所工作流、连接法律数据源及符合保密要求的法律级控制。", "category": "company", "priority": 0, "published_at": "2026-09-17 00:00:00", "created_at": "2026-09-22 09:51:16.860422", "keywords": ["OpenAI", "Astra", "法律AI", "企业服务"], "is_duplicate": false}, {"id": "530048c96f25", "title": "OpenAI 发布模型不对齐报告框架", "url": "https://openai.com/index/model-misalignment-reporting-framework", "source": "OpenAI Blog", "summary": "OpenAI 分享了用于追踪、调查和披露模型不对齐的报告框架，并附带六份意外或令人担忧的行为报告。", "category": "company", "priority": 0, "published_at": "2026-09-16 17:00:00", "created_at": "2026-09-22 09:51:16.860531", "keywords": ["OpenAI", "模型对齐", "AI安全"], "is_duplicate": false}, {"id": "5ce61d8a2d1a", "title": "GPT-6 Astra安全漏洞曝光，马斯克震惊", "url": "https://www.qbitai.com/2026/09/493241.html", "source": "量子位", "summary": "GPT-6 Astra被曝存在严重安全问题，引发广泛关注。马斯克对此表示震惊，该事件再次将大模型安全议题推向风口浪尖。", "category": "media", "priority": 0, "published_at": null, "created_at": "2026-09-22 09:51:16.067072", "keywords": ["GPT-6", "Astra", "AI安全", "马斯克"], "is_duplicate": false}, {"id": "b3867af818f1", "title": "GPT-6 Astra开进机器人身体！清华联手无问芯穹等开源RPent", "url": "https://www.qbitai.com/2026/09/493218.html", "source": "量子位", "summary": "清华大学联合无问芯穹等机构开源机器人项目，将GPT-6 Astra大模型集成至机器人系统中，推动AI与机器人技术融合。", "category": "media", "priority": 0, "published_at": null, "created_at": "2026-09-22 09:51:16.067152", "keywords": ["GPT", "机器人", "清华大学", "开源"], "is_duplicate": false}, {"id": "71b2e2b87682", "title": "开源Top2！实测阶跃Step 5 Preview，真有点猛啊…", "url": "https://www.qbitai.com/2026/09/493179.html", "source": "量子位", "summary": "量子位实测阶跃星辰Step 5 Preview模型，性能跻身开源模型Top2，表现强劲。", "category": "media", "priority": 0, "published_at": null, "created_at": "2026-09-22 09:51:16.067177", "keywords": ["阶跃星辰", "Step 5", "开源模型", "AI大模型", "量子位"], "is_duplicate": false}, {"id": "223e736ef370", "title": "谷歌AI首次“越狱”：自己破解密码入侵三家公司", "url": "https://www.qbitai.com/2026/09/492912.html", "source": "量子位", "summary": "谷歌AI模型PaLM 2成功绕过安全限制，自主破解密码入侵三家公司，引发AI安全担忧。", "category": "media", "priority": 0, "published_at": null, "created_at": "2026-09-22 09:51:16.067384", "keywords": ["谷歌AI", "AI安全", "越狱", "PaLM 2"], "is_duplicate": false}, {"id": "2218304d0c5e", "title": "日产新一代 Skyline 要来了！搭载双涡轮 V6，还会有 6 速手动挡？", "url": "https://www.ifanr.com/1681312?utm_source=rss&utm_medium=rss&utm_campaign=", "source": "爱范儿", "summary": "日产新一代Skyline或将搭载双涡轮V6发动机，传闻还配备6速手动挡，定位聚焦驾驶乐趣而非复刻经典。", "category": "media", "priority": 1, "published_at": "2026-09-21 13:50:13", "created_at": "2026-09-22 09:51:18.593765", "keywords": ["日产", "Skyline", "双涡轮V6", "手动挡"], "is_duplicate": false}, {"id": "0f1657a33b06", "title": "新 Mac mini 首发实测：我的第一台「多 Agent」电脑", "url": "https://www.ifanr.com/1681211?utm_source=rss&utm_medium=rss&utm_campaign=", "source": "爱范儿", "summary": "Mac mini 首发实测，聚焦其多 Agent 协同能力，指出能跑大模型只是 AI PC 的起点。", "category": "media", "priority": 1, "published_at": "2026-09-21 13:06:52", "created_at": "2026-09-22 09:51:18.593791", "keywords": ["Agent", "Mac mini", "AI PC"], "is_duplicate": false}, {"id": "e38af0d22d6d", "title": "安德利跨界并购：7.93亿现金接盘\"失意标的\"，三月两收监管函隐现风险", "url": "https://www.tmtpost.com/8147943.html", "source": "钛媒体", "summary": "安德利以7.93亿元现金收购前次夭折的标的资产，三个月内两度收到监管函，业绩对赌与估值差异引发监管关注，投资风险凸显。", "category": "media", "priority": 1, "published_at": "2026-09-21 12:31:37", "created_at": "2026-09-22 09:51:18.015674", "keywords": ["并购", "监管", "对赌协议"], "is_duplicate": false}, {"id": "51ff4a80edfe", "title": "对话芯展速李蓁：内存墙下，存储不再是算力的附属品", "url": "https://www.tmtpost.com/8147817.html", "source": "钛媒体", "summary": "芯展速李蓁认为，下一个十年算力的差距会缩小，存力的差距才会决定谁跑在前面。存储正在从算力的附属品转变为关键竞争要素。", "category": "media", "priority": 1, "published_at": "2026-09-21 12:30:41", "created_at": "2026-09-22 09:51:18.015710", "keywords": ["内存墙", "存储", "算力", "芯展速", "李蓁"], "is_duplicate": false}, {"id": "15c40d05e169", "title": "数学与人工智能顾问委员会", "url": "https://openai.com/index/advisory-group-on-mathematics-and-ai", "source": "OpenAI Blog", "summary": "OpenAI成立独立的数学与人工智能顾问委员会，指导新兴AI成果的审查与对外沟通。", "category": "company", "priority": 1, "published_at": "2026-09-21 12:00:00", "created_at": "2026-09-22 09:51:16.860274", "keywords": ["OpenAI", "数学", "人工智能", "顾问委员会"], "is_duplicate": false}, {"id": "c761affae0e0", "title": "Higgsfield AI 借助 GPT-6 Astra 一天内上线新视频功能", "url": "https://openai.com/index/higgsfield-from-prompt-to-production-with-astra", "source": "OpenAI Blog", "summary": "Higgsfield AI 利用 OpenAI 的 GPT-6 Astra，仅用一天便推出新视频功能，帮助小企业主更轻松地制作视频广告，加速创意工具上市。", "category": "company", "priority": 1, "published_at": "2026-09-21 12:00:00", "created_at": "2026-09-22 09:51:16.860304", "keywords": ["GPT-6 Astra", "Higgsfield AI", "视频广告", "OpenAI"], "is_duplicate": false}, {"id": "0c832aef2f30", "title": "理想智驾被指「不遵守交规」？这真不能全怪它", "url": "https://www.ifanr.com/1681289?utm_source=rss&utm_medium=rss&utm_campaign=", "source": "爱范儿", "summary": "理想汽车辅助驾驶系统因违规行为引发争议，文章分析指出部分情况下辅助驾驶需做出非常规操作，责任不应完全归咎于系统本身。", "category": "media", "priority": 1, "published_at": "2026-09-21 10:46:05", "created_at": "2026-09-22 09:51:18.593841", "keywords": ["理想汽车", "智驾", "辅助驾驶", "交通规则"], "is_duplicate": false}, {"id": "7401530cddb0", "title": "消费降温，为什么香氛却升温了？", "url": "https://www.tmtpost.com/8147678.html", "source": "钛媒体", "summary": "整体消费降温背景下，香氛品类逆势增长，满足消费者情绪需求与悦己消费趋势。", "category": "media", "priority": 1, "published_at": "2026-09-21 10:08:34", "created_at": "2026-09-22 09:51:18.015764", "keywords": ["消费降温", "香氛", "悦己消费", "情绪价值"], "is_duplicate": false}, {"id": "6ec803ffcb47", "title": "七天，AI制药迎来新时代", "url": "https://www.tmtpost.com/8147588.html", "source": "钛媒体", "summary": "AI制药行业迈入新阶段，真正决定未来走向的不是生成漂亮分子的速度，而是将模型、实验、数据、临床与商业化全链条打通的综合能力。", "category": "media", "priority": 1, "published_at": "2026-09-21 10:03:01", "created_at": "2026-09-22 09:51:18.015863", "keywords": ["AI制药", "医药研发", "行业趋势"], "is_duplicate": false}, {"id": "54a7e2a9929f", "title": "AI 正在制造 App 过剩时代", "url": "https://www.ifanr.com/1681265?utm_source=rss&utm_medium=rss&utm_campaign=", "source": "爱范儿", "summary": "AI技术降低了开发门槛，导致应用数量激增，但也引发了质量参差和用户注意力分散的问题，用户是否愿意为App付费成为新挑战。", "category": "media", "priority": 1, "published_at": "2026-09-21 08:15:46", "created_at": "2026-09-22 09:51:18.593864", "keywords": ["AI", "App", "应用生态", "技术趋势"], "is_duplicate": false}, {"id": "7d69997126b3", "title": "OpenAI Academy 新增多条学习路径", "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths", "source": "OpenAI Blog", "summary": "OpenAI Academy 推出面向员工、开发者、领导者、教育者和学生的新学习路径，帮助用户构建并展示实用的 AI 技能。", "category": "company", "priority": 1, "published_at": "2026-09-21 07:00:00", "created_at": "2026-09-22 09:51:16.860345", "keywords": ["OpenAI", "AI教育", "学习路径"], "is_duplicate": false}, {"id": "cf945bc816f2", "title": "早报｜特努斯：iPhone Duo是乔布斯理念体现/小米18 Pro确认涨价/西贝否认倒闭传闻", "url": "https://www.ifanr.com/1681049?utm_source=rss&utm_medium=rss&utm_campaign=", "source": "爱范儿", "summary": "Google Gemini安全测试越界误攻三家真实企业；长鑫存储G5 DRAM平台量产，晶圆裸片数提升至少50%；智谱MaaS平台将上线数据内容不留存机制。", "category": "media", "priority": 1, "published_at": "2026-09-21 00:14:53", "created_at": "2026-09-22 09:51:18.593944", "keywords": ["Gemini", "长鑫存储", "智谱"], "is_duplicate": false}, {"id": "165ade6c9cff", "title": "V7如何为AI代理提供机构记忆", "url": "https://openai.com/index/v7", "source": "OpenAI Blog", "summary": "V7利用GPT-5.6将分散的企业文档转化为AI代理可调用的结构化上下文，支持完成复杂且可溯源的任务。", "category": "company", "priority": 1, "published_at": "2026-09-21 00:00:00", "created_at": "2026-09-22 09:51:16.860364", "keywords": ["GPT", "AI Agent", "V7", "企业知识管理"], "is_duplicate": false}, {"id": "ca254f79defe", "title": "19999元起，启元机器人想将「个人机器人」卖进普通人的生活", "url": "https://www.ifanr.com/1681137?utm_source=rss&utm_medium=rss&utm_campaign=", "source": "爱范儿", "summary": "启元机器人宣布起售价19999元，目标是将个人机器人带入普通消费者生活，解决机器人应用落地难题。", "category": "media", "priority": 1, "published_at": "2026-09-20 13:10:39", "created_at": "2026-09-22 09:51:18.593968", "keywords": ["机器人", "启元机器人", "个人机器人"], "is_duplicate": false}, {"id": "4aecff53e295", "title": "推出澳大利亚青年安全蓝图", "url": "https://openai.com/index/australian-youth-safety-blueprint", "source": "OpenAI Blog", "summary": "OpenAI发布澳大利亚青年安全蓝图，提出六支柱路线图，旨在保护并赋能年轻人在AI环境中获得更安全的使用体验。", "category": "company", "priority": 1, "published_at": "2026-09-18 12:00:00", "created_at": "2026-09-22 09:51:16.860384", "keywords": ["OpenAI", "AI安全", "青少年保护", "政策指南"], "is_duplicate": false}, {"id": "f118e40a8b3a", "title": "Cooley如何借助ChatGPT加速IPO业务", "url": "https://openai.com/index/cooley-gopublic", "source": "OpenAI Blog", "summary": "律所Cooley开发GO Public工具，结合ChatGPT Work赋能IPO流程，帮助律师提前发现问题、聚焦关键判断。", "category": "company", "priority": 1, "published_at": "2026-09-17 12:00:00", "created_at": "2026-09-22 09:51:16.860403", "keywords": ["GPT", "IPO", "ChatGPT", "Cooley"], "is_duplicate": false}, {"id": "9928f8a9c937", "title": "帮助老年人在日常生活中使用AI", "url": "https://openai.com/index/helping-older-adults-use-ai-in-everyday-life", "source": "OpenAI Blog", "summary": "OpenAI与AARP合作，在美国10个城市为1000名老年人提供免费ChatGPT工作坊，帮助他们安全掌握实用的AI技能。", "category": "company", "priority": 1, "published_at": "2026-09-16 16:00:00", "created_at": "2026-09-22 09:51:16.860440", "keywords": ["GPT", "OpenAI", "AARP", "老年人"], "is_duplicate": false}, {"id": "4e67d5aaea47", "title": "用AI重塑广告新范式", "url": "https://openai.com/index/reimagining-advertising-with-ai", "source": "OpenAI Blog", "summary": "OpenAI推出Sponsored Agents等AI广告工具，支持HubSpot和Shopify集成，为营销人员提供全新自动化广告体验。", "category": "company", "priority": 1, "published_at": "2026-09-16 13:00:00", "created_at": "2026-09-22 09:51:16.860459", "keywords": ["OpenAI", "Agent"], "is_duplicate": false}, {"id": "3dc1760d875e", "title": "Hex借助GPT-6 Astra将复杂分析转化为可视化报告", "url": "https://openai.com/index/hex-gpt-6-astra", "source": "OpenAI Blog", "summary": "OpenAI推出GPT-6 Astra，帮助Hex的数据智能体将分析答案转化为交互式可视化图表，提升企业数据报告的展示效果。", "category": "company", "priority": 1, "published_at": "2026-09-16 12:00:00", "created_at": "2026-09-22 09:51:16.860493", "keywords": ["GPT", "Agent", "可视化", "数据分析"], "is_duplicate": false}, {"id": "867b32f73285", "title": "如何将AI使用与业务价值相连", "url": "https://openai.com/index/how-to-connect-ai-usage-to-business-value", "source": "OpenAI Blog", "summary": "OpenAI推出ChatGPT Work和Codex分析功能，帮助团队追踪AI使用情况和支出，识别培训需求，并将AI采纳度与业务成果直接关联。", "category": "company", "priority": 1, "published_at": "2026-09-16 12:00:00", "created_at": "2026-09-22 09:51:16.860512", "keywords": ["GPT", "OpenAI", "ChatGPT", "Codex", "AI业务价值"], "is_duplicate": false}, {"id": "ca161d419364", "title": "员工如何解锁新工作方式", "url": "https://openai.com/index/unlocking-new-ways-of-working", "source": "OpenAI Blog", "summary": "OpenAI经济研究显示，员工正突破传统角色使用AI，探索新型工作模式，部分AI辅助活动正逐渐成为重复性工作的一部分。", "category": "company", "priority": 1, "published_at": "2026-09-16 09:00:00", "created_at": "2026-09-22 09:51:16.860550", "keywords": ["OpenAI", "AI工作方式", "经济研究"], "is_duplicate": false}, {"id": "ddfc7312b127", "title": "Fyxer如何打造一款让人信任的AI执行助理", "url": "https://openai.com/index/fyxer", "source": "OpenAI Blog", "summary": "Fyxer利用OpenAI模型，结合微调、记忆功能和真实用户反馈，构建了一款能整理收件箱并按用户个人风格起草邮件的AI执行助理。", "category": "company", "priority": 1, "published_at": "2026-09-14 12:00:00", "created_at": "2026-09-22 09:51:16.860580", "keywords": ["OpenAI", "AI助手", "微调"], "is_duplicate": false}, {"id": "2c69cb4a8b9a", "title": "长三角安全人工智能安徽省实验室发布星界、星驭、星鉴三大AI安全解决方案", "url": "https://www.qbitai.com/2026/09/493235.html", "source": "量子位", "summary": "长三角安全人工智能安徽省实验室发布星界、星驭、星鉴三款AI安全解决方案，覆盖模型安全检测、对抗防御等核心场景。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067100", "keywords": ["发布", "AI安全", "长三角", "安徽省实验室"], "is_duplicate": false}, {"id": "167d6b165278", "title": "国产数据库跑出AI新能力！OceanBase登顶国际Data Agent榜单", "url": "https://www.qbitai.com/2026/09/493231.html", "source": "量子位", "summary": "OceanBase数据库在AI Agent领域取得突破，登顶国际Data Agent榜单，展现国产数据库AI新能力。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067127", "keywords": ["OceanBase", "数据库", "AI Agent", "国产数据库"], "is_duplicate": false}, {"id": "199567e34096", "title": "百曜科技发起，《AI虚拟细胞技术趋势、产业生态与应用前景研究报告》正式发布", "url": "https://www.qbitai.com/2026/09/493114.html", "source": "量子位", "summary": "百曜科技发起发布《AI虚拟细胞（AIVC）技术趋势、产业生态与应用前景研究报告》，系统梳理AI虚拟细胞技术的发展现状、产业生态布局及未来应用前景。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067224", "keywords": ["发布", "AI虚拟细胞", "AIVC", "技术趋势", "产业生态"], "is_duplicate": false}, {"id": "74d0f9078afc", "title": "《网络安全人才实战能力报告-AI赋能篇》正式发布，当AI进入业务深水区安全如何跟上", "url": "https://www.qbitai.com/2026/09/492849.html", "source": "量子位", "summary": "量子位发布《网络安全人才实战能力报告-AI赋能篇》，聚焦AI技术深入业务场景后网络安全人才实战能力的变化与应对策略。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067435", "keywords": ["网络安全", "AI赋能", "人才报告", "发布"], "is_duplicate": false}, {"id": "30ee57e79679", "title": "马斯克批量收购破产公司ing…世界首富脑子是不一样", "url": "https://www.qbitai.com/2026/09/492661.html", "source": "量子位", "summary": "马斯克继续其收购步伐，批量收购破产公司，展现与众不同的商业眼光和投资策略。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067478", "keywords": ["收购", "马斯克", "破产公司"], "is_duplicate": false}, {"id": "4018efe9737f", "title": "27B模型分分钟交付网页，Qwen 3.8还是太能了", "url": "https://www.qbitai.com/2026/09/492573.html", "source": "量子位", "summary": "阿里通义千问Qwen 3.8模型的27B版本展现出强大的网页生成能力，能够快速交付完整网页，进一步验证了大模型在代码生成领域的实用价值。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067500", "keywords": ["Qwen", "通义千问", "27B模型", "网页生成", "阿里"], "is_duplicate": false}, {"id": "db026f57ecd0", "title": "SkyProduction天工工作台中秋国庆特惠第二波：Seedance 2.5 720P 低至 0.27 元/秒，全网地板价！", "url": "https://www.qbitai.com/2026/09/493268.html", "source": "量子位", "summary": "天工工作台推出国庆促销活动，Seedance 2.5视频生成服务720P分辨率降至0.27元/秒，为当前全网最低价格。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067018", "keywords": ["SkyProduction", "天工", "Seedance 2.5", "AI视频生成", "国庆促销"], "is_duplicate": false}, {"id": "a699065bca14", "title": "中国Neocloud市场第一！商汤大装置全面领跑", "url": "https://www.qbitai.com/2026/09/493175.html", "source": "量子位", "summary": "商汤大装置在中国Neocloud市场位居第一，彰显其在AI基础设施领域的强劲竞争力和领先地位。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067199", "keywords": ["商汤", "Neocloud", "大装置", "AI基础设施"], "is_duplicate": false}, {"id": "ec6e54f59cfc", "title": "IDC评估中国AI算力管理平台：范式智能四项维度获满分，综合评分第一", "url": "https://www.qbitai.com/2026/09/493109.html", "source": "量子位", "summary": "IDC发布中国AI算力管理平台评估报告，范式智能在四项评估维度均获满分，综合评分位列第一，彰显技术实力与市场竞争力。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067247", "keywords": ["IDC", "AI算力", "范式智能", "算力管理平台", "评估报告"], "is_duplicate": false}, {"id": "e5546b707ed6", "title": "汽车行业首个AI超级智能体「迪迪虾」来了！腾势多款车型即将OTA", "url": "https://www.qbitai.com/2026/09/493091.html", "source": "量子位", "summary": "腾势汽车发布行业首个AI超级智能体「迪迪虾」，后续将通过OTA覆盖多款车型，升级智能座舱体验。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067271", "keywords": ["AI智能体", "腾势", "OTA", "智能座舱"], "is_duplicate": false}, {"id": "2adc5ee9512c", "title": "刚刚，剪映发了个大的：AI生视频和AI剪辑的壁，被打破了！", "url": "https://www.qbitai.com/2026/09/492973.html", "source": "量子位", "summary": "剪映发布重要功能更新，打通AI视频生成与AI剪辑之间的技术壁垒，实现从生成到编辑的一体化体验。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067293", "keywords": ["剪映", "AI视频生成", "AI剪辑", "字节跳动"], "is_duplicate": false}, {"id": "5eed8cd32a12", "title": "华为首发企业AI白皮书：AI让员工更快了，怎样让整个企业受益？", "url": "https://www.qbitai.com/2026/09/493068.html", "source": "量子位", "summary": "华为发布企业AI白皮书，探讨如何在提升员工效率的基础上，推动企业整体从AI技术中获益。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067315", "keywords": ["华为", "企业AI", "白皮书", "AI转型"], "is_duplicate": false}, {"id": "40724e49a214", "title": "一张3090就能跑！全栈国产模型，把AI办公搬到企业本地", "url": "https://www.qbitai.com/2026/09/492946.html", "source": "量子位", "summary": "单张RTX 3090即可运行全栈国产AI模型，实现企业本地化AI办公部署，大幅降低硬件门槛。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067337", "keywords": ["国产模型", "RTX 3090", "企业本地部署", "AI办公"], "is_duplicate": false}, {"id": "fd85d7e13f95", "title": "APUS 开源国内首批Jev跨平台复现：国产模型实现秒级决策", "url": "https://www.qbitai.com/2026/09/492939.html", "source": "量子位", "summary": "APUS开源国内首批Jev跨平台复现项目，助力国产AI模型实现秒级推理决策，推动大模型应用落地。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067360", "keywords": ["APUS", "Jev", "开源", "跨平台", "国产模型"], "is_duplicate": false}, {"id": "9ef94db408ad", "title": "预售价31.98万-38.98万元，腾势Z9S展车抵达全国166城334家门店", "url": "https://www.qbitai.com/2026/09/492873.html", "source": "量子位", "summary": "腾势Z9S展车已抵达全国166城334家门店，预售价区间为31.98万至38.98万元，即将开启大规模线下展示。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067409", "keywords": ["腾势Z9S", "新能源汽车", "展车", "预售价"], "is_duplicate": false}, {"id": "9a1d96ca768b", "title": "留给人类阻止AI的时间不多了", "url": "https://www.qbitai.com/2026/09/492755.html", "source": "量子位", "summary": "量子位报道警示AI发展速度已超出人类控制能力，呼吁社会各界关注AI安全风险，在技术失控前建立有效治理机制。", "category": "media", "priority": 1, "published_at": null, "created_at": "2026-09-22 09:51:16.067455", "keywords": ["AI安全", "人工智能治理", "技术风险", "量子位"], "is_duplicate": false}, {"id": "3bc7a7622682", "title": "摁！TA 总能直出决定性瞬间", "url": "https://www.ifanr.com/1681350?utm_source=rss&utm_medium=rss&utm_campaign=", "source": "爱范儿", "summary": "vivo X500 Pro Max 手机能捕捉生活中的决定性瞬间，即使曾被误判为废片的画面也能直出佳作，让用户轻松放下出片压力。", "category": "media", "priority": 2, "published_at": "2026-09-21 12:41:12", "created_at": "2026-09-22 09:51:18.593819", "keywords": ["vivo X500 Pro Max", "摄影", "手机", "决定性瞬间", "爱范儿"], "is_duplicate": false}, {"id": "be4131e18f5c", "title": "猪周期：在低谷中熬垮对手", "url": "https://www.tmtpost.com/8146565.html", "source": "钛媒体", "summary": "生猪行业进入周期低谷，头部企业通过在低位维持产能的策略消耗竞争对手，实现行业洗牌。这种博弈看似双输，实则是在周期底部淘汰弱势玩家的关键战术。", "category": "media", "priority": 2, "published_at": "2026-09-21 10:08:20", "created_at": "2026-09-22 09:51:18.015813", "keywords": ["猪周期", "生猪养殖", "行业洗牌", "周期底部", "产能策略"], "is_duplicate": false}, {"id": "5be197c538ef", "title": "森海塞尔 MOMENTUM 5 体验：AI 时代的稳重选择", "url": "https://www.ifanr.com/1681181?utm_source=rss&utm_medium=rss&utm_campaign=", "source": "爱范儿", "summary": "森海塞尔MOMENTUM 5无线耳机上手体验：在AI时代，好耳机不仅音质出色，还需支持AI语音交互功能，兼顾传统音频与智能体验。", "category": "media", "priority": 2, "published_at": "2026-09-21 02:24:43", "created_at": "2026-09-22 09:51:18.593913", "keywords": ["森海塞尔", "MOMENTUM 5", "无线耳机", "AI耳机", "音频体验"], "is_duplicate": false}];</script>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>🤖 AI 工作台</h2>
+    <div class="date" id="sidebarDate"></div>
+  </div>
+  <div class="sidebar-menu">
+    <div class="menu-item active" data-panel="news" onclick="switchPanel('news')"><span class="menu-icon">📡</span><span class="menu-label">每日推送</span><span class="menu-badge" id="newsBadge">--</span></div>
+    <div class="menu-item" data-panel="notes" onclick="switchPanel('notes')"><span class="menu-icon">✏️</span><span class="menu-label">思考速记</span></div>
+    <div class="menu-item" data-panel="investment" onclick="switchPanel('investment')"><span class="menu-icon">📈</span><span class="menu-label">投资参考</span></div>
+    <div class="menu-item" data-panel="inspiration" onclick="switchPanel('inspiration')"><span class="menu-icon">💡</span><span class="menu-label">每日灵感</span></div>
+  </div>
+</aside>
+<main class="main">
+  <header class="main-header">
+    <h1 id="mainTitle">📰 AI 日报</h1>
+    <div class="actions">
+      <button class="btn-refresh" onclick="reloadData()">🔄 刷新数据</button>
+      <button class="btn-open-html" onclick="openFullHTML()">📄 打开完整日报</button>
+    </div>
+  </header>
+  <div class="main-body" id="mainBody">
+    <div id="panelContent"><div class="loading"><div class="spinner"></div><div>正在加载数据...</div></div></div>
+  </div>
+</main>
+<script>
+var DATA_DIR = '';
+var allItems = [];
+var currentFilter = 'all';
+var currentSearch = '';
+
+document.addEventListener('DOMContentLoaded', function() {
+  var today = new Date().toISOString().slice(0,10);
+  document.getElementById('sidebarDate').textContent = today;
+  if (window.__AI_DATA__ && window.__AI_DATA__.length > 0) {
+    allItems = window.__AI_DATA__;
+    doRender();
+  } else {
+    loadFromServer(today);
+  }
+});
+
+async function loadFromServer(today) {
+  try {
+    var resp = await fetch('ai-data-' + today + '.json');
+    if (!resp.ok) throw new Error();
+    allItems = await resp.json();
+    doRender();
+  } catch(e) { showEmpty(); }
+}
+
+function showEmpty() {
+  document.getElementById('panelContent').innerHTML = '<div class="empty-state"><div class="icon">📭</div><p>暂未找到今日数据</p><button class="btn" onclick="location.reload()">重试</button></div>';
+}
+
+function doRender() {
+  renderMain();
+  var badge = document.getElementById('newsBadge');
+  if (badge) badge.textContent = allItems.length;
+}
+
+function renderMain() {
+  var filtered = getFilteredItems();
+  var p0 = filtered.filter(function(i){return i.priority===0});
+  var p1 = filtered.filter(function(i){return i.priority===1});
+  var p2 = filtered.filter(function(i){return i.priority===2});
+  var today = allItems.length > 0 ? (allItems[0].created_at || '').slice(0,10) : '';
+  document.getElementById('mainTitle').textContent = '📰 AI 日报 · ' + today;
+  var html = '<div class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="搜索标题或摘要..." oninput="onSearch(this.value)"></div>';
+  html += '<div class="filter-bar">';
+  html += makeFilterChip('all', '全部', filtered.length);
+  html += makeFilterChip('0', '🔴 P0', p0.length);
+  html += makeFilterChip('1', '🟡 P1', p1.length);
+  html += makeFilterChip('2', '🟢 P2', p2.length);
+  html += '</div>';
+  html += buildSection('🔴','P0 必看',p0);
+  html += buildSection('🟡','P1 推荐',p1);
+  html += buildSection('🟢','P2 拓展',p2);
+  if (!html.includes('news-card')) html = '<div class="empty-state"><div class="icon">🔍</div><p>没有找到匹配的资讯</p></div>';
+  document.getElementById('panelContent').innerHTML = html;
+}
+
+function makeFilterChip(val, label, count) {
+  var active = currentFilter === val ? ' active' : '';
+  return '<div class="filter-chip' + active + '" data-filter="' + val + '">'+label+' ('+count+')</div>';
+}
+
+function buildSection(emoji, title, items) {
+  if (!items.length) return '';
+  var cards = items.map(function(item){ return cardHTML(item); }).join('');
+  return '<div class="section"><div class="section-title">' + emoji + ' ' + title + ' <span class="count">(' + items.length + ')</span></div><div class="news-list">' + cards + '</div></div>';
+}
+
+function cardHTML(item) {
+  var srcClass = {'量子位':'source-qbitai','OpenAI Blog':'source-openai','钛媒体':'source-tmtpost','爱范儿':'source-ifanr'}[item.source] || 'source-qbitai';
+  var tags = (item.keywords||[]).slice(0,3).map(function(k){ return '<span>#' + esc(k) + '</span>'; }).join(' ');
+  var pubDate = item.published_at ? item.published_at.slice(5,10) : '';
+  var url = esc(item.url);
+  var emoji = item.priority===0?'🔴':item.priority===1?'🟡':'🟢';
+  var card = '<div class="news-card" onclick="window.open(\'' + url + '\',\'_blank\')"><div class="card-top"><div class="card-title">' + esc(item.title) + '</div><div class="priority-badge badge-p' + item.priority + '">' + emoji + '</div></div>';
+  if (item.summary) card += '<div class="card-summary">' + esc(item.summary) + '</div>';
+  card += '<div class="card-bottom"><span class="card-source ' + srcClass + '">' + esc(item.source) + '</span><span class="card-tags">' + tags + '</span>';
+  if (pubDate) card += '<span style="font-size:10px;color:#4b5063">' + pubDate + '</span>';
+  card += '<a href="' + url + '" target="_blank" class="card-link" onclick="event.stopPropagation()">原文 \u2192</a></div></div>';
+  return card;
+}
+function getFilteredItems() {
+  return allItems.filter(function(item) {
+    var matchFilter = currentFilter === 'all' || String(item.priority) === currentFilter;
+    var q = currentSearch.toLowerCase();
+    var matchSearch = !q || item.title.toLowerCase().includes(q) || (item.summary||'').toLowerCase().includes(q);
+    return matchFilter && matchSearch;
+  });
+}
+
+document.addEventListener('click', function(e) {
+  var chip = e.target.closest('.filter-chip');
+  if (chip) { currentFilter = chip.dataset.filter; renderMain(); return; }
+});
+
+function onSearch(q) { currentSearch = q; renderMain(); }
+
+function reloadData() {
+  document.getElementById('panelContent').innerHTML = '<div class="loading"><div class="spinner"></div><div>正在刷新...</div></div>';
+  if (window.__AI_DATA__ && window.__AI_DATA__.length > 0) {
+    allItems = window.__AI_DATA__;
+    doRender();
+  } else {
+    loadFromServer(new Date().toISOString().slice(0,10));
+  }
+}
+
+function openFullHTML() {
+  window.open('AI日报-' + new Date().toISOString().slice(0,10) + '.html', '_blank');
+}
+
+function switchPanel(panel) {
+  document.querySelectorAll('.menu-item').forEach(function(b) { b.classList.toggle('active', b.dataset.panel === panel); });
+  if (panel === 'news') { renderMain(); }
+  else if (panel === 'notes') { renderNotesPanel(); }
+  else {
+    var labels = {investment:'📈 投资参考', inspiration:'💡 每日灵感'};
+    document.getElementById('panelContent').innerHTML = '<div class="empty-state"><div class="icon">' + (labels[panel] ? labels[panel].split(' ')[0] : '📋') + '</div><p>' + (labels[panel] ? labels[panel].split(' ').slice(1).join(' ') : panel) + '<br>即将上线，敬请期待</p></div>';
+  }
+}
+
+var NOTES_KEY = 'ai-news-notes';
+var HISTORY_KEY = 'ai-news-notes-history';
+
+function renderNotesPanel() {
+  var saved = localStorage.getItem(NOTES_KEY) || '';
+  document.getElementById('panelContent').innerHTML = '<div style="padding:16px 24px;flex:1;display:flex;flex-direction:column;height:100%"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-shrink:0"><h2 style="font-size:16px;font-weight:700;color:#fff">✏️ 思考速记</h2><div style="display:flex;gap:6px"><button onclick="clearNotes()" style="background:transparent;color:var(--muted);border:1px solid var(--border);padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer">清空</button><button onclick="saveNotes()" style="background:rgba(96,165,250,.12);color:var(--accent);border:none;padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:600">💾 保存</button></div></div><p style="font-size:11px;color:var(--muted);margin-bottom:10px;flex-shrink:0">自动保存至浏览器本地</p><textarea id="notesArea" placeholder="记录你的想法、灵感、重要洞察..." style="flex:1;width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:14px;color:var(--text);resize:none;outline:none;font-family:inherit;line-height:1.7;flex-shrink:1">' + saved.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</textarea><div id="noteHistory" class="note-history" style="margin-top:14px;flex-shrink:0"></div></div>';
+  setTimeout(function(){ initNotes(); }, 10);
+}
+
+function saveNotes() {
+  var area = document.getElementById('notesArea');
+  if (!area) return;
+  var text = area.value;
+  localStorage.setItem(NOTES_KEY, text);
+  var history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+  history.unshift({time: new Date().toLocaleString('zh-CN'), text: text});
+  if (history.length > 10) history.pop();
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  renderNoteHistory();
+  var btn = document.querySelector('.btn-save');
+  if (btn) { btn.textContent = '✅ 已保存'; setTimeout(function(){ btn.textContent = '💾 保存'; }, 1500); }
+}
+
+function clearNotes() {
+  if (confirm('确定清空所有笔记？')) {
+    localStorage.removeItem(NOTES_KEY);
+    var area = document.getElementById('notesArea');
+    if (area) area.value = '';
+    renderNoteHistory();
+  }
+}
+
+function renderNoteHistory() {
+  var history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+  var container = document.getElementById('noteHistory');
+  if (!container) return;
+  if (!history.length) { container.innerHTML = ''; return; }
+  container.innerHTML = '<h4>历史版本</h4>' + history.slice(0,5).map(function(h,i){ return '<div class="note-entry" onclick="restoreNote(' + i + ')"><div class="note-time">' + esc(h.time) + '</div><div>' + esc(h.text).slice(0,80) + (h.text.length>80?'...':'') + '</div></div>'; }).join('');
+}
+
+function restoreNote(idx) {
+  var history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+  var area = document.getElementById('notesArea');
+  if (history[idx] && area) area.value = history[idx].text;
+}
+
+function initNotes() {
+  var area = document.getElementById('notesArea');
+  if (!area) return;
+  var timer;
+  area.addEventListener('input', function() { clearTimeout(timer); timer = setTimeout(saveNotes, 2000); });
+}
+
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
