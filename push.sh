@@ -1,73 +1,40 @@
-#!/bin/bash
-# AI 工作台 - 推送到 GitHub，Cloudflare Pages 自动部署
+#!/usr/bin/env bash
 set -e
 
-REPO_URL="git@github.com:yancx8702/ai-workbench.git"
 DEPLOY_DIR="$HOME/pi/workbench-deploy"
-WORKDIR="$HOME/Desktop/AI工作台"
-TODAY=$(date +%Y-%m-%d)
+OUTPUT_DIR="$HOME/Desktop/AI工作台"
 
-echo "🚀 开始部署 AI 工作台..."
-
-# 检查源文件是否存在
-if [ ! -f "$WORKDIR/workbench.html" ]; then
-    echo "❌ 未找到 workbench.html，请先运行 main.py"
-    exit 1
-fi
-
-if [ ! -f "$WORKDIR/ai-data-${TODAY}.json" ]; then
-    echo "⚠️  未找到今日 JSON 数据，尝试使用最新文件..."
-    LATEST_JSON=$(ls -t "$WORKDIR"/ai-data-*.json 2>/dev/null | head -1)
-    if [ -z "$LATEST_JSON" ]; then
-        echo "❌ 没有找到任何 ai-data JSON 文件"
-        exit 1
-    fi
-    TODAY=$(basename "$LATEST_JSON" .json | sed 's/ai-data-//')
-fi
-
-echo "📦 今日日期: $TODAY"
-
-# 初始化/清理部署目录
-rm -rf "$DEPLOY_DIR"
-mkdir -p "$DEPLOY_DIR"
 cd "$DEPLOY_DIR"
 
-# 复制必要文件
-cp "$WORKDIR/workbench.html" ./workbench.html
-cp "$WORKDIR/ai-data-${TODAY}.json" ./ai-data-${TODAY}.json
-cp "$WORKDIR/AI日报-${TODAY}.html" ./AI日报-${TODAY}.html 2>/dev/null || true
+# 将 push.sh 纳入版本控制（幂等）
+git add push.sh 2>/dev/null || true
 
-# 添加 README
-cat > README.md << 'EOF'
-# AI 工作台
+# 找到最新的日期文件
+LATEST_JSON=$(ls -t "$OUTPUT_DIR"/ai-data-*.json 2>/dev/null | head -1)
+if [ -z "$LATEST_JSON" ]; then
+    echo "⚠️  未找到新的 ai-data JSON 文件，跳过部署"
+    exit 0
+fi
 
-由 AI News Agent 每日自动更新的 AI 资讯工作台。
+DATE=$(basename "$LATEST_JSON" | sed 's/ai-data-//;s/\.json//')
+echo "📦 部署 $(date +%Y-%m-%d) 的 AI 日报..."
 
-## 架构
+# 复制数据文件
+cp "$OUTPUT_DIR/ai-data-${DATE}.json"     "$DEPLOY_DIR/"
+cp "$OUTPUT_DIR/AI日报-${DATE}.html"      "$DEPLOY_DIR/"
+cp "$OUTPUT_DIR/workbench.html"           "$DEPLOY_DIR/"
 
-- **数据采集**: `~/AI-News-Agent/main.py`（每天 8:00 cron 自动抓取）
-- **数据格式**: `ai-data-{date}.json` + 内嵌式 HTML
-- **部署**: Cloudflare Pages（从 GitHub 自动部署）
+echo "💾 文件已复制到部署目录"
 
-## 手动触发更新
+# ---- main 分支 ----
+git add ai-data-${DATE}.json AI日报-${DATE}.html workbench.html push.sh
+git commit -m "更新: AI日报 ${DATE}" || echo "main 分支无变更"
+git push origin main
 
-```bash
-cd ~/AI-News-Agent
-python3 main.py --quiet
-cd ~/pi && bash deploy/push.sh
-```
-EOF
+# ---- gh-pages 分支 ----
+git checkout -f gh-pages
+git merge main --no-edit || true
+git push origin gh-pages
+git checkout -f main
 
-# Git 初始化并提交
-git init -q
-git config user.email "yancx@local"
-git config user.name "yancx"
-git add .
-git commit -q -m "docs: deploy workbench $(date +%Y-%m-%d)" || echo "💾 无变更，跳过提交"
-
-# 添加远程并推送
-git remote add origin "$REPO_URL" 2>/dev/null || true
-git push -u origin main --force 2>&1
-
-echo "✅ 已推送到 GitHub: $REPO_URL"
-echo "🌐 Cloudflare Pages 将自动部署"
+echo "✅ 部署完成！访问: https://yancx8702.github.io/ai-workbench/workbench.html"
