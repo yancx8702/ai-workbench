@@ -1,0 +1,621 @@
+[
+  {
+    "id": "5b0e18aa5aa5",
+    "title": "早报｜GPT-6 Sol发布，价格腰斩；特努斯：Siri AI不应替代人际关系；OPPO Find X10系列4999元起发布",
+    "url": "https://www.ifanr.com/1681566?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "summary": "GPT-6 Sol正式发布，定价大幅下调；特努斯表示AI助手不应替代人际互动；OPPO推出Find X10系列手机，起售价4999元。",
+    "category": "media",
+    "priority": 0,
+    "published_at": "2026-09-23 00:05:46",
+    "created_at": "2026-09-23 09:15:58.145250",
+    "keywords": [
+      "GPT-6",
+      "OPPO",
+      "Find X10",
+      "Siri AI"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "e0153f827bb4",
+    "title": "介绍 GPT-6 Sol 和 Luna",
+    "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI 推出 GPT-6 Sol 和 Luna 两款模型，分别针对日常工作中能力与成本的不同平衡需求，带来前沿智能体验。",
+    "category": "company",
+    "priority": 0,
+    "published_at": "2026-09-22 18:00:00",
+    "created_at": "2026-09-23 09:15:56.739234",
+    "keywords": [
+      "GPT",
+      "OpenAI",
+      "GPT-6"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "e589b2f4a9be",
+    "title": "从卖芯片到做平台，地平线押注“Arm+Android”模式",
+    "url": "https://www.tmtpost.com/8148860.html",
+    "source": "钛媒体",
+    "summary": "地平线征程芯片突破1500万颗，Arm+Android模式正成为其进入车企自研体系的新支点。",
+    "category": "media",
+    "priority": 0,
+    "published_at": "2026-09-22 14:13:31",
+    "created_at": "2026-09-23 09:15:57.590802",
+    "keywords": [
+      "突破"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "d7d00afcfac3",
+    "title": "10.99万元起！日产新N7真加量还降价",
+    "url": "https://www.ifanr.com/1681515?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "summary": "日产推出全新N7车型，起售价10.99万元，在增加配置的同时降低价格，展现出较高的性价比竞争力。",
+    "category": "media",
+    "priority": 0,
+    "published_at": "2026-09-22 13:48:33",
+    "created_at": "2026-09-23 09:15:58.145286",
+    "keywords": [
+      "日产N7",
+      "新能源汽车",
+      "汽车降价",
+      "性价比高"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "cd6f48cc9d97",
+    "title": "有效第三方评估的优先事项与原则",
+    "url": "https://openai.com/index/priorities-principles-third-party-assessments",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI发布 Frontier 模型及安全措施第三方安全评估的优先事项与原则，强调评估的严谨性、安全性和独立性。",
+    "category": "company",
+    "priority": 0,
+    "published_at": "2026-09-22 00:00:00",
+    "created_at": "2026-09-23 09:15:56.739295",
+    "keywords": [
+      "OpenAI",
+      "AI安全",
+      "第三方评估",
+      "前沿模型"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "f5b4962b96e7",
+    "title": "构建下一阶段AI的标准",
+    "url": "https://openai.com/index/building-standards-next-phase-ai",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI提出建立全球AI标准的路径，呼吁通过协调评估、报告和治理机制来提升AI安全性。",
+    "category": "company",
+    "priority": 0,
+    "published_at": "2026-09-21 10:00:00",
+    "created_at": "2026-09-23 09:15:56.739354",
+    "keywords": [
+      "OpenAI",
+      "AI标准",
+      "AI安全"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "7d69997126b3",
+    "title": "OpenAI学院新增学习路径",
+    "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI学院推出面向员工、开发者、领导者、教育者及学生的新学习路径，帮助各类人群构建和实践AI技能。",
+    "category": "company",
+    "priority": 0,
+    "published_at": "2026-09-21 07:00:00",
+    "created_at": "2026-09-23 09:15:56.739375",
+    "keywords": [
+      "OpenAI",
+      "AI教育",
+      "学习路径"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "4e67d5aaea47",
+    "title": "用AI重塑广告体验",
+    "url": "https://openai.com/index/reimagining-advertising-with-ai",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI推出新一代AI广告产品，包括赞助Agent、营销工具及与HubSpot和Shopify的集成。",
+    "category": "company",
+    "priority": 0,
+    "published_at": "2026-09-16 13:00:00",
+    "created_at": "2026-09-23 09:15:56.739489",
+    "keywords": [
+      "OpenAI",
+      "AI",
+      "Agent",
+      "广告"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "86069a48e69a",
+    "title": "亏损20亿后，优刻得仍要“梭哈”：中小云还有退路吗？ | 深度",
+    "url": "https://www.tmtpost.com/8149165.html",
+    "source": "钛媒体",
+    "summary": "优刻得在累计亏损20亿元后仍加码云计算投入，引发对中小云厂商生存空间与未来出路的深度探讨。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-23 00:00:00",
+    "created_at": "2026-09-23 09:15:57.590706",
+    "keywords": [
+      "优刻得",
+      "云计算",
+      "亏损",
+      "中小云厂商"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "62e03511bb59",
+    "title": "【钛晨报】三部门部署轻工纺织产业；阿里试水千问平板，与字节押注不同AI终端；2026中国民营企业500强发布",
+    "url": "https://www.tmtpost.com/8149326.html",
+    "source": "钛媒体",
+    "summary": "三部门联合部署轻工纺织产业发展；阿里推出搭载千问大模型的平板设备，探索AI终端新路径；2026中国民营企业500强榜单正式发布。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 23:20:00",
+    "created_at": "2026-09-23 09:15:57.590773",
+    "keywords": [
+      "千问",
+      "AI终端",
+      "民营企业500强",
+      "发布"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "d4300c61f89b",
+    "title": "GPT-6 提示词缓存优化",
+    "url": "https://openai.com/index/better-prompt-caching-for-gpt-6",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI 发布 GPT-6 提示词缓存改进方案，提升缓存命中率，新增诊断工具与显式断点控制，可显著降低延迟和调用成本。",
+    "category": "company",
+    "priority": 1,
+    "published_at": "2026-09-22 21:00:00",
+    "created_at": "2026-09-23 09:15:56.739053",
+    "keywords": [
+      "GPT",
+      "Prompt Caching",
+      "OpenAI"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "4cc59ffd2096",
+    "title": "涨价 9 万？岚图梦想家 9 凭什么敢卖 41.99 万元",
+    "url": "https://www.ifanr.com/1681478?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "summary": "岚图梦想家 9 售价 41.99 万元，相比前代涨价约 9 万元，文章分析其通过强化旗舰质感与配置升级，支撑更高定价策略。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 13:47:50",
+    "created_at": "2026-09-23 09:15:58.145312",
+    "keywords": [
+      "岚图梦想家 9",
+      "MPV",
+      "新能源汽车",
+      "汽车价格"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "2b267a68c343",
+    "title": "OPPO 新旗舰塞满了「两亿」，却只要 6799 元起",
+    "url": "https://www.ifanr.com/1681522?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "summary": "OPPO 推出全新旗舰手机，最大卖点是搭载两亿像素主摄，起售价仅 6799 元，性价比突出。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 13:24:35",
+    "created_at": "2026-09-23 09:15:58.145335",
+    "keywords": [
+      "OPPO",
+      "旗舰手机",
+      "两亿像素",
+      "影像旗舰"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "a9bf0b4daceb",
+    "title": "从单点获客到全渠道经营，出海商家如何打开增长新空间？",
+    "url": "https://www.tmtpost.com/8149186.html",
+    "source": "钛媒体",
+    "summary": "文章分析六大增长方向，指导出海商家向下扎根平台、向上拓展空间，实现从单点获客向全渠道经营的转型突破。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 12:45:22",
+    "created_at": "2026-09-23 09:15:57.590826",
+    "keywords": [
+      "出海",
+      "全渠道",
+      "增长策略",
+      "跨境电商",
+      "多平台经营"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "5c582fa60155",
+    "title": "16.18万元起！广汽传祺越7配备三把锁，\"可城可野\"有了新答案",
+    "url": "https://www.ifanr.com/1681498?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "summary": "广汽传祺推出越7车型，售价16.18万元起，配备三把锁越野配置，主打城市与越野兼顾的\"方盒子\"造型SUV。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 12:42:15",
+    "created_at": "2026-09-23 09:15:58.145359",
+    "keywords": [
+      "广汽传祺",
+      "越7",
+      "三把锁",
+      "方盒子SUV",
+      "越野"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "63f9da715a8f",
+    "title": "除了谈钱，银行也想和你谈谈感情",
+    "url": "https://www.tmtpost.com/8148914.html",
+    "source": "钛媒体",
+    "summary": "银行在转型中不再仅聚焦金融服务，更注重与用户建立情感连接，以适应时代变化。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 12:41:49",
+    "created_at": "2026-09-23 09:15:57.590871",
+    "keywords": [
+      "银行",
+      "金融服务",
+      "客户情感",
+      "数字化转型",
+      "银行转型"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "28d01f0f131a",
+    "title": "UB-221交出II期答卷：从兽药到人用创新药，申联生物的一场高成本跨界试验",
+    "url": "https://www.tmtpost.com/8149210.html",
+    "source": "钛媒体",
+    "summary": "申联生物UB-221 II期试验确认其对比安慰剂有效，与奥马珠单抗的对比结果仍为探索性分析，差异化优势待III期验证。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 12:31:29",
+    "created_at": "2026-09-23 09:15:57.590901",
+    "keywords": [
+      "UB-221",
+      "II期临床",
+      "申联生物",
+      "创新药"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "e975d9487cfa",
+    "title": "用GPT-6 Astra将研究时间与成本减半",
+    "url": "https://openai.com/index/parallel-cuts-time-and-cost-with-astra",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI官方博客发布案例：Parallel公司利用GPT-6 Astra，使AI Agent完成劳动力市场数据研究与分析的时间与成本均缩减一半。",
+    "category": "company",
+    "priority": 1,
+    "published_at": "2026-09-22 12:00:00",
+    "created_at": "2026-09-23 09:15:56.739272",
+    "keywords": [
+      "GPT",
+      "Agent",
+      "GPT-6"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "df4c9798fc74",
+    "title": "主业承压加快布局电解液添加剂，奥克股份拟收购祺添新材控制权｜并购一线",
+    "url": "https://www.tmtpost.com/8148800.html",
+    "source": "钛媒体",
+    "summary": "奥克股份主业承压，拟收购祺添新材控制权，以补充电解液添加剂产品、产能及客户资源，加速拓展该业务。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 10:50:31",
+    "created_at": "2026-09-23 09:15:57.590928",
+    "keywords": [
+      "收购",
+      "奥克股份",
+      "祺添新材",
+      "电解液添加剂"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "d92fcb45f6a8",
+    "title": "光帆携手韶音，以 AI OS 破局单点功能内卷",
+    "url": "https://www.ifanr.com/1681475?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "summary": "光帆与韶音达成合作，通过推出AI操作系统打破单一功能内卷困局，为用户提供一体化智能体验，无需企业自建AI能力。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 10:10:26",
+    "created_at": "2026-09-23 09:15:58.145382",
+    "keywords": [
+      "光帆",
+      "韶音",
+      "AI OS",
+      "智能硬件",
+      "AI操作系统"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "7844097e4a4b",
+    "title": "当朱江明开始谈苹果，零跑的底气从哪来？",
+    "url": "https://www.tmtpost.com/8148951.html",
+    "source": "钛媒体",
+    "summary": "零跑创始人朱江明近期谈及苹果，引发市场对两者合作可能的猜测。从技术日发布的信息来看，零跑正逐步形成清晰的技术路径，其底气源于自主核心技术积累。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 09:31:34",
+    "created_at": "2026-09-23 09:15:57.590950",
+    "keywords": [
+      "零跑汽车",
+      "朱江明",
+      "苹果合作",
+      "智能驾驶",
+      "技术发布"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "0e7c5a815eee",
+    "title": "千问办公押注的企业上下文，是 Agent 时代的组织语言",
+    "url": "https://www.ifanr.com/1681363?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "summary": "通义千问企业版聚焦组织上下文管理，为企业打造专属AI Agent，帮助用户在办公场景中更高效地使用企业知识。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 09:06:44",
+    "created_at": "2026-09-23 09:15:58.145405",
+    "keywords": [
+      "千问",
+      "Agent"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "f4a17154db0a",
+    "title": "早报｜曝iPhone Duo量产初期良率仅过六成/小米18 Pro加入硬件级防窥/OpenAI新模型24天攻克百道数学未解难题",
+    "url": "https://www.ifanr.com/1679313?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "summary": "OpenAI新模型24天攻克百道数学未解难题；iPhone Duo量产良率不足六成；小米18 Pro新增硬件级防窥功能。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-22 00:11:45",
+    "created_at": "2026-09-23 09:15:58.145436",
+    "keywords": [
+      "OpenAI",
+      "新模型"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "0f1657a33b06",
+    "title": "新 Mac mini 首发实测：我的第一台「多 Agent」电脑",
+    "url": "https://www.ifanr.com/1681211?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "summary": "爱范儿发布新 Mac mini 首发实测，探讨其运行大模型和作为「多 Agent」电脑的能力，认为能跑大模型只是 AI PC 的起点。",
+    "category": "media",
+    "priority": 1,
+    "published_at": "2026-09-21 13:06:52",
+    "created_at": "2026-09-23 09:15:58.145486",
+    "keywords": [
+      "Agent",
+      "Mac mini",
+      "AI PC",
+      "大模型"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "c761affae0e0",
+    "title": "Higgsfield AI借助GPT-6 Astra一天上线视频新功能",
+    "url": "https://openai.com/index/higgsfield-from-prompt-to-production-with-astra",
+    "source": "OpenAI Blog",
+    "summary": "Higgsfield AI利用OpenAI的GPT-6 Astra快速开发视频广告功能，降低小企业创作门槛，加速创意工具上市。",
+    "category": "company",
+    "priority": 1,
+    "published_at": "2026-09-21 12:00:00",
+    "created_at": "2026-09-23 09:15:56.739315",
+    "keywords": [
+      "GPT-6 Astra",
+      "Higgsfield AI",
+      "视频生成",
+      "OpenAI"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "15c40d05e169",
+    "title": "数学与人工智能咨询小组",
+    "url": "https://openai.com/index/advisory-group-on-mathematics-and-ai",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI成立独立的数学与人工智能咨询小组，负责审查和沟通新兴AI研究成果，确保技术发展方向的科学性与透明度。",
+    "category": "company",
+    "priority": 1,
+    "published_at": "2026-09-21 12:00:00",
+    "created_at": "2026-09-23 09:15:56.739335",
+    "keywords": [
+      "OpenAI",
+      "数学",
+      "人工智能",
+      "咨询小组"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "165ade6c9cff",
+    "title": "V7如何赋予AI代理机构记忆",
+    "url": "https://openai.com/index/v7",
+    "source": "OpenAI Blog",
+    "summary": "V7利用GPT-5.6将企业分散文件转化为上下文，使AI代理能完成复杂且有据可查的工作，相当于为企业构建机构记忆。",
+    "category": "company",
+    "priority": 1,
+    "published_at": "2026-09-21 00:00:00",
+    "created_at": "2026-09-23 09:15:56.739393",
+    "keywords": [
+      "GPT",
+      "Agent",
+      "GPT-5.6",
+      "V7"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "4aecff53e295",
+    "title": "推出澳大利亚青年安全蓝图",
+    "url": "https://openai.com/index/australian-youth-safety-blueprint",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI发布六支柱路线图，旨在让青少年更安全地体验AI，同时保护和赋能年轻用户。",
+    "category": "company",
+    "priority": 1,
+    "published_at": "2026-09-18 12:00:00",
+    "created_at": "2026-09-23 09:15:56.739413",
+    "keywords": [
+      "OpenAI",
+      "AI安全",
+      "青少年保护"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "f118e40a8b3a",
+    "title": "Cooley如何借助ChatGPT加速IPO业务",
+    "url": "https://openai.com/index/cooley-gopublic",
+    "source": "OpenAI Blog",
+    "summary": "Cooley开发GO Public工具，将ChatGPT引入IPO流程，帮助律师更早发现问题，将专业判断聚焦于关键事项。",
+    "category": "company",
+    "priority": 1,
+    "published_at": "2026-09-17 12:00:00",
+    "created_at": "2026-09-23 09:15:56.739433",
+    "keywords": [
+      "ChatGPT",
+      "IPO",
+      "Cooley",
+      "法律科技"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "e08e557b23b7",
+    "title": "推出Astra for Law",
+    "url": "https://openai.com/index/astra-for-law",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI发布面向法律行业的AI产品Astra，提供前沿智能、定制律所工作流、连接法律数据源及法律级保密控制，助力机密客户工作。",
+    "category": "company",
+    "priority": 1,
+    "published_at": "2026-09-17 00:00:00",
+    "created_at": "2026-09-23 09:15:56.739451",
+    "keywords": [
+      "OpenAI",
+      "Astra",
+      "法律AI"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "9928f8a9c937",
+    "title": "助力老年人将AI融入日常生活",
+    "url": "https://openai.com/index/helping-older-adults-use-ai-in-everyday-life",
+    "source": "OpenAI Blog",
+    "summary": "OpenAI与AARP合作，在美国10个城市为1000名老年人提供免费ChatGPT实操工作坊，帮助其安全掌握实用AI技能。",
+    "category": "company",
+    "priority": 1,
+    "published_at": "2026-09-16 16:00:00",
+    "created_at": "2026-09-23 09:15:56.739470",
+    "keywords": [
+      "GPT",
+      "OpenAI",
+      "AARP",
+      "老年教育"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "3dc1760d875e",
+    "title": "Hex携手GPT-6 Astra将复杂分析转化为可视化报告",
+    "url": "https://openai.com/index/hex-gpt-6-astra",
+    "source": "OpenAI Blog",
+    "summary": "Hex利用OpenAI GPT-6 Astra赋能数据代理，自动将复杂分析结果转为交互式可视化图表，让员工轻松分享专业数据洞察。",
+    "category": "company",
+    "priority": 1,
+    "published_at": "2026-09-16 12:00:00",
+    "created_at": "2026-09-23 09:15:56.739519",
+    "keywords": [
+      "GPT",
+      "Agent"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "59e4afb87ba0",
+    "title": "卖废品上瘾的年轻人，遍地开花的回收机",
+    "url": "https://www.tmtpost.com/8148919.html",
+    "source": "钛媒体",
+    "summary": "年轻人沉迷废品回收交易成新潮流，城市回收机快速普及，形成新型消费现象。",
+    "category": "media",
+    "priority": 2,
+    "published_at": "2026-09-22 12:44:09",
+    "created_at": "2026-09-23 09:15:57.590847",
+    "keywords": [
+      "废品回收",
+      "年轻人",
+      "回收机",
+      "消费趋势"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "daca7e6c062a",
+    "title": "2026年中报基金盈利投资者数量占比分析",
+    "url": "https://www.tmtpost.com/8148978.html",
+    "source": "钛媒体",
+    "summary": "全市场混合型基金盈利投资者占比均值78.52%，中位数91.97%，少数产品因风险暴露拉低均值，基金间盈利体验分化明显。",
+    "category": "media",
+    "priority": 2,
+    "published_at": "2026-09-22 09:23:17",
+    "created_at": "2026-09-23 09:15:57.590985",
+    "keywords": [
+      "分析",
+      "基金盈利",
+      "投资者占比"
+    ],
+    "is_duplicate": false
+  },
+  {
+    "id": "2218304d0c5e",
+    "title": "日产新一代 Skyline 要来了！搭载双涡轮 V6，还会有 6 速手动挡？",
+    "url": "https://www.ifanr.com/1681312?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "summary": "日产新一代 Skyline 即将推出，预计搭载双涡轮 V6 发动机，或提供 6 速手动挡选项。新车将重新定位，而非单纯复刻经典。",
+    "category": "media",
+    "priority": 2,
+    "published_at": "2026-09-21 13:50:13",
+    "created_at": "2026-09-23 09:15:58.145463",
+    "keywords": [
+      "日产",
+      "Skyline",
+      "双涡轮 V6",
+      "手动挡",
+      "汽车"
+    ],
+    "is_duplicate": false
+  }
+]
