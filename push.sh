@@ -27,13 +27,20 @@ cp "$OUTPUT_DIR/workbench.html"           "$DEPLOY_DIR/"
 echo "💾 文件已复制到部署目录"
 
 # ---- main 分支 ----
+<<<<<<< HEAD
 git add ai-data-${DATE}.json AI日报-${DATE}.html workbench.html
+=======
+git add ai-data-${DATE}.json AI日报-${DATE}.html workbench.html push.sh
+>>>>>>> gh-pages
 git commit -m "更新: AI日报 ${DATE}" || echo "main 分支无变更"
 git push origin main
 
 # ---- gh-pages 分支 ----
+<<<<<<< HEAD
 git add push.sh
 
+=======
+>>>>>>> gh-pages
 git checkout -f gh-pages
 git merge main --no-edit || true
 git push origin gh-pages

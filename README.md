@@ -2,16 +2,9 @@
 
 由 AI News Agent 每日自动更新的 AI 资讯工作台。
 
-## 架构
+- **每日自动抓取**: 量子位、OpenAI Blog、钛媒体、爱范儿
+- **智能分级**: P0 必看 / P1 推荐 / P2 拓展
+- **手机友好**: 响应式设计
 
-- **数据采集**: `~/AI-News-Agent/main.py`（每天 8:00 cron 自动抓取）
-- **数据格式**: `ai-data-{date}.json` + 内嵌式 HTML
-- **部署**: Cloudflare Pages（从 GitHub 自动部署）
+[查看日报](workbench.html)
 
-## 手动触发更新
-
-```bash
-cd ~/AI-News-Agent
-python3 main.py --quiet
-cd ~/pi && bash deploy/push.sh
-```
