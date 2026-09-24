@@ -2,7 +2,7 @@
 set -e
 
 DEPLOY_DIR="$HOME/pi/workbench-deploy"
-OUTPUT_DIR="$HOME/Desktop/AI工作台"
+OUTPUT_DIR="$HOME/Desktop"
 
 cd "$DEPLOY_DIR"
 
