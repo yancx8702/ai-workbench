@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🤖 AI 日报 · 2026-09-25</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+      background: #0f1117;
+      color: #e2e4e9;
+      line-height: 1.6;
+      padding: 24px 16px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 32px 0 24px;
+      border-bottom: 1px solid #2a2d37;
+      margin-bottom: 28px;
+    }
+    .header h1 { font-size: 26px; font-weight: 700; color: #fff; }
+    .header .sub { color: #8b8fa3; font-size: 14px; margin-top: 6px; }
+    .header .stats { display: flex; justify-content: center; gap: 20px; margin-top: 14px; }
+    .header .stat { font-size: 13px; color: #8b8fa3; }
+    .header .stat span { color: #fff; font-weight: 600; }
+
+    /* Section */
+    .section { margin-bottom: 32px; }
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 14px;
+      padding-left: 12px;
+      border-left: 3px solid #555;
+    }
+    .section:nth-child(2) .section-title { border-color: #ef4444; }
+    .section:nth-child(3) .section-title { border-color: #f59e0b; }
+    .section:nth-child(4) .section-title { border-color: #22c55e; }
+
+    /* Grid */
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+
+    /* Card */
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d37;
+      border-radius: 10px;
+      padding: 16px 18px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover {
+      border-color: #3d4150;
+      transform: translateY(-1px);
+    }
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .priority-badge {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      margin-top: 2px;
+    }
+    .p0 { background: rgba(239,68,68,0.15); }
+    .p1 { background: rgba(245,158,11,0.15); }
+    .p2 { background: rgba(34,197,94,0.15); }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f0f2f5;
+      line-height: 1.4;
+    }
+    .card-body {
+      font-size: 13.5px;
+      color: #9ca3af;
+      line-height: 1.65;
+      margin-bottom: 10px;
+      padding-left: 34px;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-left: 34px;
+    }
+    .source {
+      font-size: 12px;
+      color: #6b7280;
+      background: #232630;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .keywords {
+      font-size: 12px;
+      color: #6b7280;
+    }
+    .read-more {
+      font-size: 12px;
+      color: #60a5fa;
+      text-decoration: none;
+      margin-left: auto;
+      transition: color 0.15s;
+    }
+    .read-more:hover { color: #93c5fd; text-decoration: underline; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: #4b5063;
+      font-size: 12px;
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid #2a2d37;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🤖 AI 日报</h1>
+      <div class="sub">2026-09-25 · 自动生成 · 共 55 条资讯</div>
+      <div class="stats">
+        <div class="stat">🔴 必看 <span>9</span></div>
+        <div class="stat">🟡 推荐 <span>41</span></div>
+        <div class="stat">🟢 拓展 <span>5</span></div>
+      </div>
+    </div>
+
+
+    <section class="section">
+      <h2 class="section-title">🔴 P0 必看 (9 条)</h2>
+      <div class="news-grid">
+
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p0">🔴</span>
+            <span class="card-title">5999 起！无需多言｜小米 18 Pro 系列发布会</span>
+          </div>
+          <div class="card-body">小米18 Pro系列新品发布会举行，起售价为5999元，定位高端旗舰市场，引发数码圈关注。</div>
+          <div class="card-footer">
+            <span class="source">爱范儿</span>
+            <span class="keywords">发布, 小米, 旗舰手机</span>
+            <a href="https://www.ifanr.com/1682002?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p0">🔴</span>
+            <span class="card-title">高通新王牌：个人 AI 时代来了</span>
+          </div>
+          <div class="card-body">高通骁龙峰会发布多款新平台，覆盖手机、电脑、耳机、手表及VR/XR设备，全面布局个人AI时代。</div>
+          <div class="card-footer">
+            <span class="source">爱范儿</span>
+            <span class="keywords">高通, 骁龙峰会, 个人AI</span>
+            <a href="https://www.ifanr.com/1682048?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p0">🔴</span>
+            <span class="card-title">OpenAI Academy两周年</span>
+          </div>
+          <div class="card-body">OpenAI Academy成立两周年，持续推动AI技能培训普及，致力于将更多社区纳入学习体系。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">OpenAI, OpenAI Academy, AI教育</span>
+            <a href="https://openai.com/index/two-years-of-openai-academy" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p0">🔴</span>
+            <span class="card-title">萨姆·奥特曼在联合国安理会的讲话</span>
+          </div>
+          <div class="card-body">OpenAI首席执行官萨姆·奥特曼在联合国安理会发表讲话，围绕AI安全、人类控制及国际合作等议题阐述立场。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">OpenAI, Sam Altman, AI安全</span>
+            <a href="https://openai.com/index/sam-altman-un-security-council-remarks" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p0">🔴</span>
+            <span class="card-title">ChatGPT Ads expands to Southeast Asia and Taiwan</span>
+          </div>
+          <div class="card-body">ChatGPT Ads is expanding to Southeast Asia and Taiwan, giving eligible businesses new ways to reach people across more than 60 countries.</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">GPT</span>
+            <a href="https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p0">🔴</span>
+            <span class="card-title">推出 GPT-6 Sol 和 Luna</span>
+          </div>
+          <div class="card-body">OpenAI发布两款新模型GPT-6 Sol和Luna，在能力与成本间提供不同平衡方案，将前沿智能应用于日常工作。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">GPT, OpenAI, 新模型</span>
+            <a href="https://openai.com/index/introducing-gpt-6-sol-and-luna" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p0">🔴</span>
+            <span class="card-title">GPT-6之后，具身智能走向何方？诺因发布GLOW技术报告，给出机器人“一教就会”的答案</span>
+          </div>
+          <div class="card-body"></div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">GPT, 发布, 机器人</span>
+            <a href="https://www.qbitai.com/2026/09/496816.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p0">🔴</span>
+            <span class="card-title">Meta靠自研Manus翻身！股价一夜暴涨11%，登顶苹果商店，增速反超ChatGPT</span>
+          </div>
+          <div class="card-body">Meta推出自研AI产品Manus，股价单日暴涨11%，登顶苹果商店并超越ChatGPT增速，显示其在AI领域的强劲反弹势头。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">Meta, Manus, 股价</span>
+            <a href="https://www.qbitai.com/2026/09/496647.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p0">🔴</span>
+            <span class="card-title">别人忙着卷Code，Kimi抽身反打浏览器插件：网页操作一秒变Skill</span>
+          </div>
+          <div class="card-body">Kimi（月之暗面）推出浏览器插件，可将网页操作一键转化为AI技能，实现秒级自动化，切入浏览器插件赛道。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">Kimi, 浏览器插件, AI技能</span>
+            <a href="https://www.qbitai.com/2026/09/497075.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🟡 P1 推荐 (41 条)</h2>
+      <div class="news-grid">
+
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">高端 PCB 扩产潮升温，自动化装备成标配</span>
+          </div>
+          <div class="card-body">高端PCB产业迎来扩产热潮，自动化装备成为行业标准配置。翼菲科技率先深入PCB生产一线，成为行业典型样本。</div>
+          <div class="card-footer">
+            <span class="source">钛媒体</span>
+            <span class="keywords">PCB, 高端制造, 自动化装备</span>
+            <a href="https://www.tmtpost.com/8152330.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">Prompt工程师：一个新兴职业的崛起与消失</span>
+          </div>
+          <div class="card-body">随着AI模型对自然语言理解能力不断增强，曾经需要专门学习提示词编写技巧的prompt工程师职业正逐渐式微，人机交互门槛持续降低。</div>
+          <div class="card-footer">
+            <span class="source">钛媒体</span>
+            <span class="keywords">prompt工程师, 人工智能, 职业趋势</span>
+            <a href="https://www.tmtpost.com/8152516.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">豆包边缘化豆包</span>
+          </div>
+          <div class="card-body">字节跳动豆包产品线扩张过程中，出现内部产品互相竞争、边缘化的趋势，反映豆包在快速规模化中正在重塑自身产品矩阵。</div>
+          <div class="card-footer">
+            <span class="source">钛媒体</span>
+            <span class="keywords">豆包, 字节跳动, 产品策略</span>
+            <a href="https://www.tmtpost.com/8152161.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">大厂的AI战火，攻入硬件</span>
+          </div>
+          <div class="card-body">AI巨头竞争从软件层面向硬件领域延伸，围绕芯片、算力设备等硬件控制权展开激烈角逐。</div>
+          <div class="card-footer">
+            <span class="source">钛媒体</span>
+            <span class="keywords">AI硬件, 大厂竞争, 芯片</span>
+            <a href="https://www.tmtpost.com/8152015.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">AI漫剧不赚钱？好问题，我们看看八九十年代的日本动画是怎么破局的？</span>
+          </div>
+          <div class="card-body">AI漫剧商业化遇阻，借鉴日本动画80-90年代从亏损到盈利的破局经验，探讨产能翻倍、小众变国民文化的成功路径。</div>
+          <div class="card-footer">
+            <span class="source">钛媒体</span>
+            <span class="keywords">AI漫剧, 日本动画, 商业化</span>
+            <a href="https://www.tmtpost.com/8152068.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">当亚运会不再热闹，中国品牌为何挤破头？</span>
+          </div>
+          <div class="card-body">亚洲运动会热度退潮，中国国货品牌仍集体涌入名古屋赛场，展现出国牌营销突围的决心与策略。</div>
+          <div class="card-footer">
+            <span class="source">钛媒体</span>
+            <span class="keywords">亚运会, 中国品牌, 名古屋</span>
+            <a href="https://www.tmtpost.com/8152491.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">四足机器人：宇树第一，智元、云深处争第二？</span>
+          </div>
+          <div class="card-body">两家机构同日发布榜单，围绕同一市场给出不同排名，宇树位居榜首，智元与云深处争夺第二位置，折射出国内四足机器人赛道竞争格局。</div>
+          <div class="card-footer">
+            <span class="source">钛媒体</span>
+            <span class="keywords">机器人, 四足机器人, 宇树</span>
+            <a href="https://www.tmtpost.com/8152163.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">一周连发十多篇&quot;小作文&quot;，粉笔超格&quot;公考大战&quot;还没完？</span>
+          </div>
+          <div class="card-body">粉笔与超格两大公考机构近日用&quot;小作文&quot;互相交锋，一周密集发布十余篇内容，反映出粉笔面临业绩压力下的竞争焦虑。</div>
+          <div class="card-footer">
+            <span class="source">钛媒体</span>
+            <span class="keywords">粉笔, 超格, 公考</span>
+            <a href="https://www.tmtpost.com/8152263.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">早报｜网易云音乐鸿蒙版正式上线/任正非重申「华为不造车」/腾讯QClaw将停运</span>
+          </div>
+          <div class="card-body">网易云音乐鸿蒙版正式上线；任正非重申华为不造车；腾讯QClaw即将停运；腾讯WorkBuddy新增微信小程序生成能力；Google拟将TPU送入太空测试；尼康发布Z5IIC全画幅相机。</div>
+          <div class="card-footer">
+            <span class="source">爱范儿</span>
+            <span class="keywords">鸿蒙, 网易云音乐, 华为</span>
+            <a href="https://www.ifanr.com/1682171?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">14.99万元起，全新旅行者7开启预售，插混燃油并行发力</span>
+          </div>
+          <div class="card-body">全新旅行者7开启预售，起售价14.99万元，提供插电混动与燃油两种动力选择，满足不同用户需求。</div>
+          <div class="card-footer">
+            <span class="source">爱范儿</span>
+            <span class="keywords">旅行者7, 插电混动, 预售</span>
+            <a href="https://www.ifanr.com/1682158?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">奕境X9上市，28.98万元起售，华为系大六座新增选项</span>
+          </div>
+          <div class="card-body">鸿蒙智行旗下奕境品牌推出X9车型，起售价28.98万元，定位大六座SUV，为华为系家庭用车市场增添新选择。</div>
+          <div class="card-footer">
+            <span class="source">爱范儿</span>
+            <span class="keywords">奕境X9, 鸿蒙智行, 大六座SUV</span>
+            <a href="https://www.ifanr.com/1682142?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">1/3 价格，1/8 重量，Meta 新眼镜秒杀 Vision Pro 了？</span>
+          </div>
+          <div class="card-body">Meta推出新款智能眼镜，售价仅为苹果Vision Pro的三分之一，重量仅为八分之一，凭借轻便与性价比优势，引发市场对智能眼镜能否替代Vision Pro的讨论。</div>
+          <div class="card-footer">
+            <span class="source">爱范儿</span>
+            <span class="keywords">Meta, 智能眼镜, Vision Pro</span>
+            <a href="https://www.ifanr.com/1682116?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">00后开发者，给我安利了这几个超好用的鸿蒙新能力</span>
+          </div>
+          <div class="card-body">三位00后鸿蒙开发者分享使用AI辅助开发App的经验，探讨AI在鸿蒙开发中的实用能力与仍需人工打磨的细节。</div>
+          <div class="card-footer">
+            <span class="source">爱范儿</span>
+            <span class="keywords">鸿蒙, AI开发, 00后开发者</span>
+            <a href="https://www.ifanr.com/1682109?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">小团队的大创意，为什么能在 HarmonyOS 7 上变为现实？</span>
+          </div>
+          <div class="card-body">HarmonyOS 7 为小团队开发者提供强大底层支持，降低开发门槛，让创新想法更容易转化为产品。</div>
+          <div class="card-footer">
+            <span class="source">爱范儿</span>
+            <span class="keywords">HarmonyOS 7, 小团队开发, 鸿蒙系统</span>
+            <a href="https://www.ifanr.com/1682085?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">AI 想包办你的一切，高通想包办你的 AI</span>
+          </div>
+          <div class="card-body">高通发布全面AI战略，计划将AI能力深度植入各类终端设备，推动AI向全场景渗透，重塑移动芯片市场竞争格局。</div>
+          <div class="card-footer">
+            <span class="source">爱范儿</span>
+            <span class="keywords">高通, AI战略, 全设备</span>
+            <a href="https://www.ifanr.com/1681946?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">智能手表的尽头是「做减法」：小团队如何用「几秒钟」抢占穿戴新蓝海？</span>
+          </div>
+          <div class="card-body">智能手表赛道竞争加剧，小团队以精简设计和精准切入细分场景，用极简交互理念开辟穿戴设备新机会。</div>
+          <div class="card-footer">
+            <span class="source">爱范儿</span>
+            <span class="keywords">智能手表, 穿戴设备, 产品策略</span>
+            <a href="https://www.ifanr.com/1681759?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">OpenAI向乌克兰扩展网络访问权限以支持民用防御</span>
+          </div>
+          <div class="card-body">OpenAI将Daybreak项目扩展至乌克兰政府，协助保护民用关键基础设施免受网络攻击威胁。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">OpenAI, 网络安全, 乌克兰</span>
+            <a href="https://openai.com/index/openai-extends-cyber-access-to-ukraine-for-civilian-defense" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">Harvey利用GPT-6 Astra将法律上下文转化为更出色的草案</span>
+          </div>
+          <div class="card-body">OpenAI发布GPT-6 Astra，Harvey借此生成更结构化、上下文感知的法律文档，帮助律师节省时间专注于策略制定。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">GPT, Harvey, 法律AI</span>
+            <a href="https://openai.com/index/harvey-from-context-to-confidence-with-astra" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">invideo如何利用GPT-6 Astra将调色效率提升3倍</span>
+          </div>
+          <div class="card-body">invideo通过GPT-6 Astra实现更精准的剪辑规划，将色彩校正与调色效率提升三倍，一天内可生成50种自定义特效。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">GPT-6 Astra, invideo, 调色</span>
+            <a href="https://openai.com/index/invideo-builds-with-gpt-6-astra" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">Ringg的AI代理借助OpenAI解决高达65%的客户来电</span>
+          </div>
+          <div class="card-body">Ringg采用GPT-5.6构建多语言AI客服代理，覆盖语音、聊天和WhatsApp等渠道，相比GPT-4.1成本降低90%。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">GPT, OpenAI, Agent</span>
+            <a href="https://openai.com/index/ringg" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">推出MentalHealthBench心理健康评估基准</span>
+          </div>
+          <div class="card-body">OpenAI发布MentalHealthBench，这是一个由专家指导的基准测试，用于评估AI在真实心理健康对话中的有用性和安全性。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">基准测试, 心理健康, AI安全</span>
+            <a href="https://openai.com/index/introducing-mentalhealthbench" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">Airbnb 扩大 GPT-6 Astra 及 OpenAI 前沿模型使用范围</span>
+          </div>
+          <div class="card-body">Airbnb 正逐步向工程团队开放 GPT-6 Astra 和 OpenAI 前沿模型，帮助工程师更高效地修复 Bug、设计系统并加速产品上线。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">GPT, OpenAI, Airbnb</span>
+            <a href="https://openai.com/index/airbnb-gpt-6-astra" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">Grab与OpenAI携手为东南亚带来实用AI技能培训</span>
+          </div>
+          <div class="card-body">OpenAI与Grab联合推出GO Forward with AI区域项目，助力东南亚3万合作伙伴掌握实用AI技能，推动人工智能普惠应用。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">OpenAI, Grab, 东南亚</span>
+            <a href="https://openai.com/index/grab-openai-ai-skills-southeast-asia" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">GPT-6 提示缓存能力升级</span>
+          </div>
+          <div class="card-body">GPT-6 显著提升提示缓存命中率，新增诊断工具、显式断点及控制选项，帮助降低延迟与调用成本。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">GPT-6, 提示缓存, OpenAI</span>
+            <a href="https://openai.com/index/better-prompt-caching-for-gpt-6" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">Parallel使用GPT-6 Astra将研究时间和成本减半</span>
+          </div>
+          <div class="card-body">OpenAI推出GPT-6 Astra后，Parallel的AI代理在进行劳动力市场数据研究时，时间和成本均降低一半，展现了模型在Agent场景下的高效性能。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">GPT, Agent</span>
+            <a href="https://openai.com/index/parallel-cuts-time-and-cost-with-astra" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">有效第三方评估的优先事项与原则</span>
+          </div>
+          <div class="card-body">OpenAI发布了前沿AI模型及防护措施的第三方安全评估原则，强调评估需严谨、独立且安全可靠。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">OpenAI, AI安全评估, 第三方评估</span>
+            <a href="https://openai.com/index/priorities-principles-third-party-assessments" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">Higgsfield AI 借助 GPT-6 Astra 一天上线新视频功能</span>
+          </div>
+          <div class="card-body">Higgsfield AI 利用 GPT-6 Astra 快速推出视频广告创作新功能，降低中小企业使用门槛，加速创意工具市场落地。</div>
+          <div class="card-footer">
+            <span class="source">OpenAI Blog</span>
+            <span class="keywords">GPT-6 Astra, Higgsfield AI, 视频广告</span>
+            <a href="https://openai.com/index/higgsfield-from-prompt-to-production-with-astra" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">出海Agent&quot;小元AI&quot;入驻腾讯WorkBuddy：找买家写开发信谈生意</span>
+          </div>
+          <div class="card-body">AI Agent产品&quot;小元AI&quot;入驻腾讯WorkBuddy平台，面向出海企业提供找买家、写开发信、谈生意等智能化外贸服务，标志着AI Agent在企业级应用场景的进一步落地。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">Agent, 出海, 腾讯WorkBuddy</span>
+            <a href="https://www.qbitai.com/2026/09/496961.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">PCIe显卡被低估了！内核补齐+通信重构，DeepSeek推理吞吐翻近7倍</span>
+          </div>
+          <div class="card-body">研究者通过补齐内核和优化通信，挖掘PCIe显卡潜力，使DeepSeek推理吞吐提升近7倍，为低成本GPU部署提供新思路。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">DeepSeek, 推理, PCIe显卡</span>
+            <a href="https://www.qbitai.com/2026/09/496925.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">海信新一代性能旗舰E7S Pro+正式发布，原生真彩再进阶</span>
+          </div>
+          <div class="card-body">海信发布新一代性能旗舰E7S Pro+，搭载原生真彩技术，在画质表现上再次实现升级。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">发布, 海信, E7S Pro+</span>
+            <a href="https://www.qbitai.com/2026/09/496658.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">汇智智能发布Hellome：国内首个FDE直连智能体服务平台，将AI交付周期压至周级别</span>
+          </div>
+          <div class="card-body">汇智智能推出Hellome平台，支持FDE直连模式开发智能体，大幅缩短AI应用交付周期。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">发布, Hellome, 智能体</span>
+            <a href="https://www.qbitai.com/2026/09/496493.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">达卯科技完成新一轮融资，算电协同核心软件层&quot;稀缺标的&quot;</span>
+          </div>
+          <div class="card-body">达卯科技完成新一轮融资，公司聚焦算电协同核心软件层，被视为该领域稀缺标的。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">融资, 达卯科技, 算电协同</span>
+            <a href="https://www.qbitai.com/2026/09/496494.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">斑马智能发布端模型AutoOmni2.0，让元神AI更懂&quot;我的世界&quot;</span>
+          </div>
+          <div class="card-body">斑马智能发布端侧模型AutoOmni2.0，进一步提升元神AI在《我的世界》中的交互与决策能力，推动端侧AI在复杂游戏场景中的应用。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">端侧模型, AutoOmni2.0, 元神AI</span>
+            <a href="https://www.qbitai.com/2026/09/496471.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">给机器人当老师，还能赚外快？&quot;中国版Index&quot;觅蜂派来了</span>
+          </div>
+          <div class="card-body">觅蜂平台让用户通过远程指导机器人完成各种任务来赚取额外收入，为机器人训练提供人类反馈数据。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">机器人, 觅蜂</span>
+            <a href="https://www.qbitai.com/2026/09/497012.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">教机器人干活，光“刷课时”可不够！灵初这次较真数据质量</span>
+          </div>
+          <div class="card-body"></div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">机器人</span>
+            <a href="https://www.qbitai.com/2026/09/496778.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">5分钟完成机器人纳管、10秒启动跨集群任务，清华大学联合无问芯穹开源具身智能云原生平台RLark</span>
+          </div>
+          <div class="card-body">清华大学联合无问芯穹开源具身智能云原生平台RLark，支持5分钟完成机器人纳管、10秒启动跨集群任务。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">机器人, 具身智能</span>
+            <a href="https://www.qbitai.com/2026/09/496767.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">成立九年，中科类脑把积累装进Token工厂</span>
+          </div>
+          <div class="card-body">中科类脑成立九年来深耕类脑智能技术，近期推出Token工厂，将多年积累的技术能力转化为高效的大模型Token生成与处理能力，助力AI基础设施构建。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">Token, 类脑智能, 中科类脑</span>
+            <a href="https://www.qbitai.com/2026/09/496615.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">它石智航顶尖团队引领中国具身智能率先迈入规模化落地阶段</span>
+          </div>
+          <div class="card-body">石智航率领顶尖团队，推动中国具身智能产业从技术研发迈向规模化商业落地阶段，标志着该领域发展进入新里程碑。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">具身智能, 石智航, 规模化落地</span>
+            <a href="https://www.qbitai.com/2026/09/496481.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">时隔十年，AI大牛署名新论文</span>
+          </div>
+          <div class="card-body">一位AI领域知名学者时隔十年再度署名发表论文，引发学术界和产业界广泛关注。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">AI, 学术论文, 研究</span>
+            <a href="https://www.qbitai.com/2026/09/496834.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">Stripe Tour 中国首秀：构建 AI 经济基础设施，赋能全球商业增长</span>
+          </div>
+          <div class="card-body">Stripe首次在中国举办Tour活动，聚焦打造AI经济基础设施，助力全球商业增长。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">Stripe, AI经济基础设施, 全球商业增长</span>
+            <a href="https://www.qbitai.com/2026/09/496779.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p1">🟡</span>
+            <span class="card-title">联想亮相阿里云栖大会：天禧AI将超级组织落地至端侧</span>
+          </div>
+          <div class="card-body">联想发布天禧AI，通过多端协同与智能调度构建企业级超级组织，在阿里云栖大会展示其将AI能力落地终端的解决方案。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">联想, 天禧AI, 阿里云栖大会</span>
+            <a href="https://www.qbitai.com/2026/09/496609.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🟢 P2 拓展 (5 条)</h2>
+      <div class="news-grid">
+
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p2">🟢</span>
+            <span class="card-title">千亿电子布龙头十余年赚15亿，俩股东一把套现40亿</span>
+          </div>
+          <div class="card-body">宏和科技市值达千亿，但十余年累计净利润仅15亿元，两位股东集中减持套现40亿元，公司存在股价回落风险。</div>
+          <div class="card-footer">
+            <span class="source">钛媒体</span>
+            <span class="keywords">宏和科技, 股东套现, 市值</span>
+            <a href="https://www.tmtpost.com/8152243.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p2">🟢</span>
+            <span class="card-title">小龙虾，散场了</span>
+          </div>
+          <div class="card-body">钛媒体文章探讨小龙虾餐饮行业的降温趋势，暗示这个曾经的网红品类正逐渐退出市场风口，背后折射出消费市场的快速迭代。</div>
+          <div class="card-footer">
+            <span class="source">钛媒体</span>
+            <span class="keywords">小龙虾, 餐饮行业, 消费趋势</span>
+            <a href="https://www.tmtpost.com/8152158.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p2">🟢</span>
+            <span class="card-title">让Token生产更高效：异构混推的关键技术演进与创新实践</span>
+          </div>
+          <div class="card-body">本文探讨了大模型推理中通过异构计算资源混合部署提升Token生产效率的关键技术，涵盖异构混推的演进历程与创新实践经验。</div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">Token, 异构混推, 大模型推理</span>
+            <a href="https://www.qbitai.com/2026/09/496578.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p2">🟢</span>
+            <span class="card-title">华为大模型双子星联手创业，要找物理世界的Scaling Law</span>
+          </div>
+          <div class="card-body"></div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">热点</span>
+            <a href="https://www.qbitai.com/2026/09/497070.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header">
+            <span class="priority-badge p2">🟢</span>
+            <span class="card-title">呃…小扎「自研Manus」刚成Meta太子，就塌房了</span>
+          </div>
+          <div class="card-body"></div>
+          <div class="card-footer">
+            <span class="source">量子位</span>
+            <span class="keywords">热点</span>
+            <a href="https://www.qbitai.com/2026/09/497060.html" target="_blank" class="read-more">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">由 AI News Agent 自动生成 · Agnes 2.5 Flash 智能分析</div>
+  </div>
+</body>
+</html>
